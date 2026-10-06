@@ -42,7 +42,7 @@
 			<div class="elite-nav-right">
 				@foreach ($headerMenus->slice($leftCount) as $menu)
 					@if($loop->last)
-						<a class="elite-nav-cta" href="{{ \App\Support\LocalizedUrl::route('home', ['locale' => $locale]) }}#consultation">{{ $menu->label }}</a>
+						<a class="elite-nav-cta" href="#" data-open-booking aria-haspopup="dialog" aria-controls="booking-popup">{{ $menu->label }}</a>
 					@else
 						<a href="{{ $menu->url }}">{{ $menu->label }}</a>
 					@endif
@@ -72,7 +72,7 @@
 							<div class="hero-text">
 								@if(filled($slider->title))<h1>{{ $slider->title }}</h1>@endif
 								@if ($slider->description)<p>{{ $slider->description }}</p>@endif
-								@if ($slider->button_label)<button type="button" class="hero-consult-button d-inline-block text-decoration-none" @if($popupSettings->is_enabled) data-open-booking aria-haspopup="dialog" aria-controls="booking-popup" @else data-consultation @endif>{{ $slider->button_label }}</button>@endif
+								@if ($slider->button_label)<button type="button" class="hero-consult-button d-inline-block text-decoration-none" data-open-booking aria-haspopup="dialog" aria-controls="booking-popup">{{ $slider->button_label }}</button>@endif
 							</div>
 						</div>
 						@endif
@@ -128,7 +128,7 @@
 					<button class="swiper-button-next" type="button" aria-label="Ảnh tiếp theo"><i class="icon-next-thin"></i></button>
 				</div>
                 <div style="margin-top: 24px; flex-shrink: 0; display: flex; justify-content: center;">
-                    <button type="button" class="d-inline-flex justify-content-center align-items-center text-decoration-none" data-consultation style="padding: 14px 42px; border-radius: 8px; background: linear-gradient(135deg, var(--main-color), #8b1528); color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(102,13,27,0.3); border: none; gap: 8px; transition: all 0.3s ease;">
+                    <button type="button" class="d-inline-flex justify-content-center align-items-center text-decoration-none" data-open-booking aria-haspopup="dialog" aria-controls="booking-popup" style="padding: 14px 42px; border-radius: 8px; background: linear-gradient(135deg, var(--main-color), #8b1528); color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(102,13,27,0.3); border: none; gap: 8px; transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
                         {{ $overviewSection->link_label ?: 'TẢI BROCHURE DỰ ÁN' }}
                     </button>
@@ -462,6 +462,8 @@
 			<div class="elite-footer-links">
 				<h3>Về Chúng Tôi</h3>
 				<!-- <a href="#">Hệ thống sảnh</a><a href="#">Dịch vụ</a><a href="#">Thực đơn tiệc</a> -->
+				<p>Tổng đại lý miền bắc</p>
+				<h5>Công ty cổ phần Bất Động Sản INDOCHINE</h5>
 			</div>
 			<div class="elite-footer-contact">
 				<h3>Liên Hệ</h3>

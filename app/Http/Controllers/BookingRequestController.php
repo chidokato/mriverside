@@ -14,8 +14,8 @@ class BookingRequestController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:100'],
             'phone' => ['required', 'string', 'regex:/^[+0-9 ().-]{8,20}$/'],
-            'guests' => ['required', 'integer', 'min:1', 'max:100000'],
-            'date' => ['required', 'date_format:Y-m-d', 'after_or_equal:today'],
+            
+            'email' => ['required', 'email', 'max:255'],
         ]);
 
         $recipient = WebsiteSetting::current()->booking_email ?: config('mail.booking_to');

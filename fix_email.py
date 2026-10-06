@@ -1,8 +1,5 @@
-﻿with open('resources/views/emails/contact-request.blade.php', 'w', encoding='utf-8') as f:
-    f.write('''<h2>Yêu cầu đăng ký từ khách hàng</h2>
-<p><strong>Họ và tên:</strong> {{ ['name'] }}</p>
-<p><strong>Email:</strong> {{ ['email'] ?? 'Không có' }}</p>
-<p><strong>Số điện thoại:</strong> {{ ['phone'] }}</p>
-<p>Yêu cầu từ form đăng ký trên website M Riverside Danang.</p>
-''')
-print("Updated email view")
+﻿import re
+path='resources/views/emails/booking-request.blade.php'
+c = open(path, encoding='utf-8').read()
+c = re.sub(r'<p><strong>Số lượng khách mời:</strong> \{\{ \\[\'guests\'\] \}\}</p>\s*<p><strong>Ngày dự kiến tổ chức:</strong> \{\{ \\\Carbon\\\Carbon::parse\(\\[\'date\'\]\)->format\(''d/m/Y''\) \}\}</p>', '<p><strong>Email:</strong> {{ [\'email\'] }}</p>', c, flags=re.DOTALL)
+open(path, 'w', encoding='utf-8').write(c)

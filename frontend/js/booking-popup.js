@@ -2,9 +2,9 @@
     const dialog = document.getElementById('booking-popup');
     if (!dialog || typeof dialog.showModal !== 'function') return;
     const form = document.getElementById('booking-popup-form');
-    const date = form.elements.date;
-    const now = new Date();
-    date.min = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    
+    
+
     let previousFocus;
     let autoOpen;
     const open = () => {

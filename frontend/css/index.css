@@ -342,11 +342,13 @@ header nav .container,
 .latest-news-slider .swiper-pagination-bullet {background:#a77c44;height:8px;width:8px;}
 
 .elite-footer {background:var(--main-color);color:#fff;position:relative;}
-.elite-footer-main {display:grid;gap:clamp(38px,7vw,130px);grid-template-columns:110px 220px minmax(0,1fr);padding:34px 0 22px;}
+.elite-footer-main {display:grid;gap:clamp(38px,7vw,130px);grid-template-columns:110px 1fr 1fr;padding:34px 0 22px;}
 .elite-footer-brand {align-items:center;display:flex;justify-content:center;text-align:center;}
 .elite-footer-brand img {height:auto;max-width:100px;width:100%;}
 .elite-footer h3 {border-bottom:1px solid rgb(255 255 255 / 78%);font-size:16px;font-weight:700;margin:0 0 11px;padding-bottom:9px;}
 .elite-footer-links a {color:#fff;display:block;font-size:13px;line-height:1.65;width:max-content;}
+.elite-footer-links p {font-size:13px;line-height:1.45;margin:0 0 3px;}
+.elite-footer-links h5 {font-size:14px;font-weight:700;margin:0;line-height:1.4;}
 .elite-footer-contact {max-width:600px;}
 .elite-footer-contact p {font-size:13px;line-height:1.45;margin:0 0 3px;}
 .elite-footer-phone {color:#fff;display:block;font-size:21px;font-weight:700;letter-spacing:.03em;margin-bottom:7px;}
