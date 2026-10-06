@@ -1,0 +1,1 @@
+<?php require "vendor/autoload.php"; $app = require_once "bootstrap/app.php"; $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class); $kernel->bootstrap(); $s = App\Models\HomepageSection::where("key", "tiemnang")->with("images")->first(); echo "Image Path: " . $s->image_path . "\n"; echo "Images Count: " . $s->images->count() . "\n"; ?>

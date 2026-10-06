@@ -16,7 +16,7 @@
 
 /* Apply directly to any title; override section-specific heading fonts. */
 .font-wasted-vindey {
-  font-family: 'Wasted Vindey', Georgia, serif !important;
+  /*font-family: 'Wasted Vindey', Georgia, serif !important;*/
   font-weight: 400 !important;
   font-style: normal !important;
 }

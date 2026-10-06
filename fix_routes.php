@@ -1,3 +1,5 @@
+﻿<?php
+\ = <<<PHP
 <?php
 
 use App\Http\Middleware\SetLocale;
@@ -41,98 +43,80 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-$homePage = function () {
-    $locale = 'vi';
+\ = function (string \) {
     return view('home', [
-        'locale' => $locale,
-        'newsArticles' => \App\Models\NewsArticle::where('locale', $locale)->published()->orderByDesc('published_at')->limit(9)->get(),
+        'locale' => \,
+        'newsArticles' => \App\Models\NewsArticle::where('locale', \)->published()->orderByDesc('published_at')->limit(9)->get(),
+        'languages' => [
+            'vi' => 'Tiếng Việt',
+            'en' => 'English',
+            'zh' => '中文',
+            'ko' => '한국어',
+        ],
+        'translations' => \ === 'vi' ? [] : trans('site'),
         'headerMenus' => Menu::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('location', 'header')
             ->where('is_active', true)
             ->orderBy('sort_order')
             ->get(),
         'heroSliders' => Slider::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('is_active', true)
             ->orderBy('sort_order')
             ->get(),
         'overviewSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('key', 'tongquan')
             ->where('is_active', true)
-            ->with(['images', 'children' => fn ($query) => $query->where('is_active', true)->with('images')])
+            ->with(['images', 'children' => fn (\) => \->where('is_active', true)->with('images')])
             ->first(),
         'locationSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('key', 'vitri')
             ->where('is_active', true)
-            ->with(['images', 'children' => fn ($query) => $query->where('is_active', true)->with('images')])
+            ->with(['images', 'children' => fn (\) => \->where('is_active', true)->with('images')])
             ->first(),
         'potentialSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('key', 'tiemnang')
             ->where('is_active', true)
-            ->with(['images', 'children' => fn ($query) => $query->where('is_active', true)->with('images')])
-            ->first(),
-        'aboutSection' => HomepageSection::query()
-            ->where('locale', $locale)
-            ->where('key', 'about')
-            ->where('is_active', true)
-            ->with(['images', 'children' => fn ($query) => $query->where('is_active', true)->with('images')])
+            ->with(['images', 'children' => fn (\) => \->where('is_active', true)->with('images')])
             ->first(),
         'ballroomSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('key', 'ballroom')
             ->where('is_active', true)
-            ->with(['images', 'children' => fn ($query) => $query->where('is_active', true)->with('images')])
+            ->with(['images', 'children' => fn (\) => \->where('is_active', true)->with('images')])
             ->first(),
         'servicesSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('key', 'services')
             ->where('is_active', true)
-            ->with(['children' => fn ($query) => $query->where('is_active', true)->with('images')])
+            ->with(['children' => fn (\) => \->where('is_active', true)->with('images')])
             ->first(),
         'amenitiesSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('key', 'tienich')
             ->where('is_active', true)
-            ->with(['children' => fn ($query) => $query->where('is_active', true)->with('images')])
+            ->with(['children' => fn (\) => \->where('is_active', true)->with('images')])
             ->first(),
         'eliteClubSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('is_active', true)
-            ->where(fn ($query) => $query->where('key', 'elite-club')->orWhere('title', 'ELITE CLUB'))
+            ->where(fn (\) => \->where('key', 'elite-club')->orWhere('title', 'ELITE CLUB'))
             ->with('images')
-            ->first(),
-        'floorPlanSection' => HomepageSection::query()
-            ->where('locale', $locale)
-            ->where('is_active', true)
-            ->where('key', 'matbang')
-            ->with('images')
-            ->first(),
-        'apartmentSection' => HomepageSection::query()
-            ->where('locale', $locale)
-            ->where('is_active', true)
-            ->where('key', 'canho')
-            ->with('children.images')
-            ->first(),
-        'salesPolicySection' => HomepageSection::query()
-            ->where('locale', $locale)
-            ->where('is_active', true)
-            ->where('key', 'giacsbh')
-            ->with('children.images')
             ->first(),
         'supportSection' => HomepageSection::query()
-            ->where('locale', $locale)
+            ->where('locale', \)
             ->where('is_active', true)
-            ->where(function ($query) {
-                $query->whereIn('key', ['support', 'dangky'])->orWhereIn('title', ['HỖ TRỢ TƯ VẤN', 'ĐĂNG KÝ'])
+            ->where(function (\) {
+                \->where('key', 'support')->orWhere('title', 'HỖ TRỢ TƯ VẤN')
                     ->orWhereIn('translation_group', HomepageSection::query()
                         ->select('translation_group')
                         ->whereNotNull('translation_group')
                         ->whereNull('parent_id')
-                        ->where(fn ($source) => $source->where('key', 'support')->orWhere('title', 'HỖ TRỢ TƯ VẤN')));
+                        ->where(fn (\) => \->where('key', 'support')->orWhere('title', 'HỖ TRỢ TƯ VẤN')));
             })
             ->whereNull('parent_id')
             ->with('images')
@@ -140,17 +124,16 @@ $homePage = function () {
     ]);
 };
 
-Route::get('/', $homePage)->defaults('locale', 'vi')->middleware(SetLocale::class)->name('home.vi');
+Route::get('/', \)->defaults('locale', 'vi')->middleware(SetLocale::class)->name('home.vi');
 Route::get('/news', [\App\Http\Controllers\NewsController::class, 'index'])->defaults('locale', 'vi')->middleware(SetLocale::class)->name('news.index.vi');
 Route::get('/news/{news}', [\App\Http\Controllers\NewsController::class, 'show'])->defaults('locale', 'vi')->whereNumber('news')->middleware(SetLocale::class)->name('news.show.vi');
 
-Route::get('/vi/{path?}', function (Request $request, ?string $path = null) {
-    $destination = url($path ?: '/');
-    if ($request->getQueryString()) $destination .= '?'.$request->getQueryString();
-    return redirect()->to($destination, 301);
+Route::get('/vi/{path?}', function (Request \, ?string \ = null) {
+    \ = url(\ ?: '/');
+    if (\->getQueryString()) \ .= '?'.\->getQueryString();
+    return redirect()->to(\, 301);
 })->where('path', 'news(?:/[0-9]+)?');
-
-Route::get('/{locale}', $homePage)->whereIn('locale', ['en', 'zh', 'ko'])->middleware(SetLocale::class)->name('home');
-
-Route::get('/{locale}/news', [\App\Http\Controllers\NewsController::class, 'index'])->whereIn('locale', ['en', 'zh', 'ko'])->middleware(SetLocale::class)->name('news.index');
-Route::get('/{locale}/news/{news}', [\App\Http\Controllers\NewsController::class, 'show'])->whereIn('locale', ['en', 'zh', 'ko'])->whereNumber('news')->middleware(SetLocale::class)->name('news.show');
+PHP;
+file_put_contents("routes/web.php", trim(\) . "\n");
+echo "Fixed routes!";
+?>

@@ -1,0 +1,1 @@
+<?php require "vendor/autoload.php"; $app = require_once "bootstrap/app.php"; $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class); $kernel->bootstrap(); $sections = App\Models\HomepageSection::all()->map(fn($s) => ["id" => $s->id, "title" => $s->title, "key" => $s->key, "parent_id" => $s->parent_id])->toArray(); echo json_encode($sections); ?>

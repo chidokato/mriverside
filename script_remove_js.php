@@ -1,0 +1,1 @@
+<?php $content = file_get_contents("resources/views/home.blade.php"); $content = preg_replace("/<script>\s*\/\/\s*Keep the existing.*?<\/script>/s", "", $content); file_put_contents("resources/views/home.blade.php", $content); ?>

@@ -1,0 +1,1 @@
+<?php $content = file_get_contents("resources/views/home.blade.php"); $content = preg_replace("/\s*<details class=\"elite-language\">.*?<\/details>/s", "", $content); file_put_contents("resources/views/home.blade.php", $content); ?>
