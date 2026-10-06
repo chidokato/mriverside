@@ -472,7 +472,7 @@
 				<div class="elite-footer-social"><a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a><a href="#" aria-label="YouTube"><i class="icon-youtube"></i></a></div>
 			</div>
 		</div>
-		<div class="elite-footer-bottom"><span>Copyright © 2026 Elite Business Center</span><div><a href="#">Chính sách Cookie</a><a href="#">Điều khoản &amp; Điều kiện</a><a href="#">Chính sách quyền riêng tư</a></div></div>
+		<div class="elite-footer-bottom"><span>Copyright © 2026 M Riverside DANANG</span><div><a href="#">Chính sách Cookie</a><a href="#">Điều khoản &amp; Điều kiện</a><a href="#">Chính sách quyền riêng tư</a></div></div>
 	</div>
 </footer>
 <!------------------- END: FOOTER ------------------->
