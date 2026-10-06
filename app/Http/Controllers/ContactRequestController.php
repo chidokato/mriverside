@@ -36,6 +36,6 @@ class ContactRequestController extends Controller
             return response()->json(['message' => 'Chưa gửi được yêu cầu. Vui lòng thử lại sau hoặc gọi 0986 003 663.'], 503);
         }
 
-        return response()->json(['message' => 'Đã gửi yêu cầu liên hệ. Elite Business Center sẽ liên hệ với bạn để tư vấn.']);
+        return response()->json(['message' => 'Đã gửi yêu cầu liên hệ. M Riverside DaNang sẽ liên hệ với bạn để tư vấn.']);
     }
 }
