@@ -260,4 +260,17 @@ document.addEventListener('DOMContentLoaded', function () {
             992: {slidesPerView: 3, spaceBetween: 28},
         },
     });
+    
+    createSwiper('.floor-plan-slider .swiper', {
+        loop: true,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.floor-plan-slider .swiper-button-next',
+            prevEl: '.floor-plan-slider .swiper-button-prev',
+        },
+        pagination: {
+            el: '.floor-plan-slider .swiper-pagination',
+            clickable: true,
+        }
+    });
 });
