@@ -33,7 +33,10 @@
 				$leftCount = ceil($totalMenus / 2);
 			@endphp
 			<div class="elite-nav-left">
-				@foreach ($headerMenus->take($leftCount) as $menu)<a href="{{ $menu->url }}">{{ $menu->label }}</a>@endforeach
+				@foreach ($headerMenus->take($leftCount) as $menu)
+					@php($menuHref = str_starts_with($menu->url, '#') ? rtrim(url()->current(), '/') . '/' . $menu->url : $menu->url)
+					<a href="{{ $menuHref }}">{{ $menu->label }}</a>
+				@endforeach
 			</div>
 			<a class="elite-nav-logo" href="{{ \App\Support\LocalizedUrl::route('home', ['locale' => $locale]) }}" aria-label="{{ $websiteSettings->title }}">
 				<img class="elite-nav-logo-white" src="{{ asset($websiteSettings->white_logo_path ?: 'frontend/img/logo-trang.png') }}" alt="{{ $websiteSettings->title }}">
@@ -44,7 +47,8 @@
 					@if($loop->last)
 						<a class="elite-nav-cta" href="#" data-open-booking aria-haspopup="dialog" aria-controls="booking-popup">{{ $menu->label }}</a>
 					@else
-						<a href="{{ $menu->url }}">{{ $menu->label }}</a>
+						@php($menuHref = str_starts_with($menu->url, '#') ? rtrim(url()->current(), '/') . '/' . $menu->url : $menu->url)
+						<a href="{{ $menuHref }}">{{ $menu->label }}</a>
 					@endif
 				@endforeach
 			</div>
@@ -95,7 +99,7 @@
 
 @if($overviewSection)
 <!------------------- TỔNG QUAN DỰ ÁN ------------------->
-<section class="sec-overview" id="tong-quan" style="padding: 60px 0; background-color: #fffaf3;">
+<section class="sec-overview" id="tongquan" style="padding: 60px 0; background-color: #fffaf3;"><span id="tong-quan" style="position:relative;top:-60px;display:block;" aria-hidden="true"></span>
 	<div class="container" style="max-width: var(--ebc-container-width);">
 		<article class="row g-4 align-items-stretch venue-layout">
 			<div class="col-lg-5">
@@ -141,7 +145,7 @@
 
 @if($locationSection)
 <!------------------- VỊ TRÍ DỰ ÁN ------------------->
-<section class="sec-location" id="vi-tri" style="padding: 60px 0; background-color: #ffffff;">
+<section class="sec-location" id="vitri" style="padding: 60px 0; background-color: #ffffff;"><span id="vi-tri" style="position:relative;top:-60px;display:block;" aria-hidden="true"></span>
 	<div class="container" style="max-width: var(--ebc-container-width);">
 		<style>
 @media (min-width: 992px) {
@@ -209,7 +213,7 @@
 
 @if($potentialSection)
 <!------------------- TIỀM NĂNG DỰ ÁN ------------------->
-<section class="sec-ebc-benefits" id="tiem-nang">
+<section class="sec-ebc-benefits" id="tiemnang"><span id="tiem-nang" style="position:relative;top:-60px;display:block;" aria-hidden="true"></span>
 	<div class="ebc-benefits-frame" style="background-image: linear-gradient(rgba(51, 6, 13, 0.75), rgba(0, 0, 0, 0.8)), url('{{ asset($potentialSection?->images->first()?->path ?: ($potentialSection?->image_path ?: 'frontend/images/cover-contact.jpg')) }}'); display: flex; flex-direction: column;">
 		<div class="container" style="max-width: var(--ebc-container-width); flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
 			<div class="ebc-event-copy text-center" style="margin: 0 auto; max-width: 800px; padding-left: 0; min-height: auto; padding-top: 40px; margin-bottom: 20px;">
@@ -249,7 +253,7 @@
 
 @if($amenitiesSection)
 <!------------------- TIỆN ÍCH DỰ ÁN ------------------->
-<section class="sec-service-experience" id="tien-ich" style="padding: 60px 0; background-color: #fffaf3;">
+<section class="sec-service-experience" id="tienich" style="padding: 60px 0; background-color: #fffaf3;"><span id="tien-ich" style="position:relative;top:-60px;display:block;" aria-hidden="true"></span>
 	<div class="container" style="max-width: var(--ebc-container-width);">
 		<div class="service-experience-heading text-center" style="margin-bottom: 40px;">
 			<h2  style="color: var(--main-color); margin-bottom: 12px;">{{ $amenitiesSection->title }}</h2>

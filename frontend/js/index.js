@@ -24,8 +24,23 @@ document.addEventListener('DOMContentLoaded', function () {
         body.classList.toggle('scrollDown', window.scrollY > 12);
     }
 
+    function getTargetElement(id) {
+        if (!id) return null;
+        return document.getElementById(id)
+            || document.getElementById(id.replace(/-/g, ''))
+            || (id === 'tongquan' ? document.getElementById('tong-quan') : null)
+            || (id === 'vitri' ? document.getElementById('vi-tri') : null)
+            || (id === 'tiemnang' ? document.getElementById('tiem-nang') : null)
+            || (id === 'tienich' ? document.getElementById('tien-ich') : null)
+            || (id === 'tong-quan' ? document.getElementById('tongquan') : null)
+            || (id === 'vi-tri' ? document.getElementById('vitri') : null)
+            || (id === 'tiem-nang' ? document.getElementById('tiemnang') : null)
+            || (id === 'tien-ich' ? document.getElementById('tienich') : null);
+    }
+
     function scrollToSelector(selector) {
-        var target = document.getElementById(decodeURIComponent(selector.slice(1)));
+        var raw = selector.startsWith('#') ? selector.slice(1) : selector;
+        var target = getTargetElement(decodeURIComponent(raw));
 
         if (!target) {
             return;
@@ -103,20 +118,33 @@ document.addEventListener('DOMContentLoaded', function () {
     updateScrollState();
     window.addEventListener('scroll', updateScrollState, {passive: true});
 
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    document.querySelectorAll('a[href*="#"]').forEach(function (anchor) {
         var href = anchor.getAttribute('href');
 
-        if (!href || href === '#') {
+        if (!href || href === '#' || anchor.matches('[data-open-booking]')) {
             return;
         }
 
+        var hashIndex = href.indexOf('#');
+        if (hashIndex === -1) return;
+        var hash = href.slice(hashIndex);
+        if (hash === '#' || hash === '') return;
+
         anchor.addEventListener('click', function (event) {
-            if (event.defaultPrevented || anchor.matches('[data-open-booking]') || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !document.getElementById(decodeURIComponent(href.slice(1)))) {
+            if (event.defaultPrevented || anchor.matches('[data-open-booking]') || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
                 return;
             }
 
-            event.preventDefault();
-            scrollToSelector(href);
+            var rawId = decodeURIComponent(hash.slice(1));
+            var target = getTargetElement(rawId);
+
+            if (target) {
+                event.preventDefault();
+                scrollToSelector(hash);
+                if (window.history && window.history.pushState) {
+                    window.history.pushState(null, null, hash);
+                }
+            }
         });
     });
 
