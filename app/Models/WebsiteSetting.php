@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WebsiteSetting extends Model
 {
-    protected $fillable = ['title', 'booking_email', 'logo_path', 'white_logo_path', 'favicon_path', 'social_image_path', 'seo_title', 'seo_description', 'seo_keywords', 'head_code', 'footer_code'];
+    protected $fillable = ['title', 'booking_email', 'hotline', 'logo_path', 'white_logo_path', 'favicon_path', 'social_image_path', 'seo_title', 'seo_description', 'seo_keywords', 'head_code', 'footer_code'];
 
     public function getSocialImageUrlAttribute(): string
     {

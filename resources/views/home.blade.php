@@ -488,7 +488,7 @@
 			<div class="elite-footer-contact">
 				<h3>Liên Hệ</h3>
 				<p>6 đường 2/9, Phường Hải Châu, Thành phố Đà Nẵng</p>
-				<a class="elite-footer-phone" href="tel:0799618555">0799 618 555</a>
+				<a class="elite-footer-phone" href="tel:{{ preg_replace('/[^0-9+]/', '', $websiteSettings->hotline ?: '0799 618 555') }}">{{ $websiteSettings->hotline ?: '0799 618 555' }}</a>
 				<div class="elite-footer-social"><a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a><a href="#" aria-label="YouTube"><i class="icon-youtube"></i></a></div>
 			</div>
 		</div>

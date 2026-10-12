@@ -9,6 +9,7 @@
     <p class="text-muted">Cài đặt chung cho tất cả ngôn ngữ, áp dụng trên trang chủ và trang tin tức.</p>
     <div class="mb-3"><label class="form-label" for="title">Tiêu đề website</label><input class="form-control" id="title" name="title" maxlength="255" required value="{{ old('title', $settings->title) }}"></div>
     <div class="mb-3"><label class="form-label" for="booking_email">Email nhận đăng ký</label><input class="form-control" type="email" id="booking_email" name="booking_email" maxlength="255" value="{{ old('booking_email', $settings->booking_email) }}" aria-describedby="booking_email_help"><small class="text-muted" id="booking_email_help">Địa chỉ email nhận yêu cầu đăng ký đặt lịch từ website. Để trống để dùng email trong cấu hình máy chủ.</small></div>
+    <div class="mb-3"><label class="form-label" for="hotline">Hotline</label><input class="form-control @error('hotline') is-invalid @enderror" id="hotline" name="hotline" maxlength="20" value="{{ old('hotline', $settings->hotline) }}" placeholder="Ví dụ: 0799 618 555" aria-describedby="hotline_help"><small class="text-muted" id="hotline_help">Số điện thoại hotline hiển thị ở chân trang và các vị trí liên hệ trên website.</small>@error('hotline')<div class="invalid-feedback">{{ $message }}</div>@enderror</div>
     <div class="row g-3">
         @foreach(['logo' => 'Logo', 'white_logo' => 'Logo trắng', 'favicon' => 'Favicon'] as $field => $label)
         <div class="col-md-4">

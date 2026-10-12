@@ -20,6 +20,7 @@ class WebsiteSettingController extends Controller
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'booking_email' => ['nullable', 'email:filter', 'max:255'],
+            'hotline' => ['nullable', 'string', 'max:20'],
             'seo_title' => ['nullable', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string', 'max:2000'],
             'seo_keywords' => ['nullable', 'string', 'max:1000'],
