@@ -1,5 +1,13 @@
 
-<button class="booking-popup-launch" type="button" data-open-booking>{{ $popupSettings->launch_label }}</button>
+<div class="booking-popup-actions">
+    <a class="booking-hotline-launch" href="tel:{{ preg_replace('/[^0-9+]/', '', $websiteSettings->hotline ?: '0799 618 555') }}">
+        <svg class="booking-hotline-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        <span>HOTLINE: {{ $websiteSettings->hotline ?: '0799 618 555' }}</span>
+    </a>
+    <button class="booking-popup-launch" type="button" data-open-booking>{{ $popupSettings->launch_label }}</button>
+</div>
 <dialog class="booking-popup" id="booking-popup" aria-labelledby="booking-popup-title">
     <div class="booking-popup-layout">
         <img class="booking-popup-photo" src="{{ $popupSettings->image_url }}" alt="{{ $popupSettings->title }}">
