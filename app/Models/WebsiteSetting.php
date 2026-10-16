@@ -17,6 +17,6 @@ class WebsiteSetting extends Model
 
     public static function current(): self
     {
-        return static::find(1) ?? new static(['title' => 'Elite Business Center']);
+        return static::find(1) ?? new static(['title' => 'M Riverside Danang']);
     }
 }

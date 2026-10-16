@@ -15,8 +15,9 @@ class ContactRequestMail extends Mailable
 
     public function build()
     {
-        return $this->subject('EBC — Yêu cầu liên hệ')
-            ->replyTo($this->contact['email'])
+        return $this->from(config('mail.from.address'), config('mail.from.name', 'M Riverside'))
+            ->subject('M Riverside — Yêu cầu liên hệ')
+            ->replyTo($this->contact['email'] ?? config('mail.from.address'))
             ->view('emails.contact-request');
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Quản trị') | Elite Business Center</title>
+    <title>@yield('title', 'Quản trị') | M Riverside</title>
     <link rel="shortcut icon" href="{{ asset('admin-assets/images/favicon.ico') }}">
     <script src="{{ asset('admin-assets/js/layout.js') }}"></script>
     <link href="{{ asset('admin-assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -16,10 +16,10 @@
 <body>
 <div id="layout-wrapper">
     <header id="page-topbar"><div class="layout-width"><div class="navbar-header">
-        <a href="{{ route('admin.dashboard') }}" class="fw-bold fs-18 text-dark text-decoration-none">ELITE BUSINESS CENTER</a>
+        <a href="{{ route('admin.dashboard') }}" class="fw-bold fs-18 text-dark text-decoration-none">M RIVERSIDE</a>
         <div class="dropdown ms-auto"><button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" type="button">{{ auth()->user()->name }}</button><div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="{{ route('admin.users.index') }}">Quản lý người dùng</a><form action="{{ route('admin.logout') }}" method="POST">@csrf<button class="dropdown-item text-danger" type="submit">Đăng xuất</button></form></div></div>
     </div></div></header>
-    <div class="app-menu navbar-menu"><div class="navbar-brand-box"><a href="{{ route('admin.dashboard') }}" class="logo logo-light"><span class="logo-lg text-white fw-bold">EBC ADMIN</span></a></div><div id="scrollbar"><div class="container-fluid"><ul class="navbar-nav" id="navbar-nav">
+    <div class="app-menu navbar-menu"><div class="navbar-brand-box"><a href="{{ route('admin.dashboard') }}" class="logo logo-light"><span class="logo-lg text-white fw-bold">M RIVERSIDE</span></a></div><div id="scrollbar"><div class="container-fluid"><ul class="navbar-nav" id="navbar-nav">
         <li class="menu-title"><span>QUẢN TRỊ</span></li>
         <li class="nav-item"><a class="nav-link menu-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}"><i class="ri-dashboard-2-line"></i><span>Tổng quan</span></a></li>
         <li class="nav-item"><a class="nav-link menu-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}"><i class="ri-group-line"></i><span>Người dùng</span></a></li>

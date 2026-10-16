@@ -15,6 +15,8 @@ class BookingRequestMail extends Mailable
 
     public function build()
     {
-        return $this->subject('EBC — Yêu cầu đặt lịch ưu đãi 50%')->view('emails.booking-request');
+        return $this->from(config('mail.from.address'), config('mail.from.name', 'M Riverside'))
+            ->subject('M Riverside — Yêu cầu tải bảng giá & thông tin dự án')
+            ->view('emails.booking-request');
     }
 }

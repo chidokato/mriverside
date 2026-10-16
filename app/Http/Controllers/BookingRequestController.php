@@ -20,18 +20,20 @@ class BookingRequestController extends Controller
 
         $recipient = WebsiteSetting::current()->booking_email ?: config('mail.booking_to');
 
+        $hotline = WebsiteSetting::current()->hotline ?: '0799 618 555';
+
         if (! filter_var($recipient, FILTER_VALIDATE_EMAIL)
             || in_array(config('mail.default'), ['log', 'array'], true)) {
-            return response()->json(['message' => 'Chức năng gửi yêu cầu đang được cấu hình. Vui lòng gọi 0986 003 663 để đặt lịch.'], 503);
+            return response()->json(['message' => "Chức năng gửi yêu cầu đang được cấu hình. Vui lòng gọi $hotline để được hỗ trợ."], 503);
         }
 
         try {
             Mail::to($recipient)->send(new BookingRequestMail($data));
         } catch (\Throwable $exception) {
             report($exception);
-            return response()->json(['message' => 'Chưa gửi được yêu cầu. Vui lòng thử lại sau hoặc gọi 0986 003 663.'], 503);
+            return response()->json(['message' => "Chưa gửi được yêu cầu. Vui lòng thử lại sau hoặc gọi $hotline."], 503);
         }
 
-        return response()->json(['message' => 'Đã gửi yêu cầu tải dữ liệu báo giá dự án. M Riverside DaNang sẽ liên hệ với bạn để xác nhận.']);
+        return response()->json(['message' => 'Đã gửi yêu cầu tải dữ liệu báo giá dự án. M Riverside Danang sẽ liên hệ với bạn để xác nhận.']);
     }
 }
