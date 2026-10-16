@@ -45,7 +45,7 @@
             });
             const data = await response.json().catch(() => ({}));
             if (response.status === 422) {
-                status.textContent = 'Vui lòng kiểm tra họ tên, số điện thoại, số khách và ngày tổ chức (từ hôm nay trở đi).';
+                status.textContent = 'Vui lòng kiểm tra họ tên, email và số điện thoại.';
             } else if (response.status === 429) {
                 status.textContent = 'Bạn đã gửi nhiều yêu cầu. Vui lòng thử lại sau một phút.';
             } else if (response.status === 419) {

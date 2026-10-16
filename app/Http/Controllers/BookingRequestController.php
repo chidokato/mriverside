@@ -18,7 +18,7 @@ class BookingRequestController extends Controller
             'email' => ['required', 'email', 'max:255'],
         ]);
 
-        $recipient = WebsiteSetting::current()->booking_email ?: config('mail.booking_to');
+        $recipient = WebsiteSetting::current()->booking_email ?: (config('mail.booking_to') ?: config('mail.from.address'));
 
         $hotline = WebsiteSetting::current()->hotline ?: '0799 618 555';
 

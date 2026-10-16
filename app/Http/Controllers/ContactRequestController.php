@@ -13,17 +13,15 @@ class ContactRequestController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'service' => ['required', Rule::in(['Đặt lịch tham quan', 'Tổ chức sự kiện', 'Đăng ký hội viên'])],
             'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'email:filter', 'max:255'],
+            'email' => ['nullable', 'email:filter', 'max:255'],
             'phone' => ['required', 'string', 'regex:/^[+0-9 ().-]{8,20}$/'],
-            'message' => ['required', 'string', 'max:5000'],
         ], [], [
-            'service' => 'dịch vụ yêu cầu', 'name' => 'họ và tên',
-            'email' => 'email', 'phone' => 'số điện thoại', 'message' => 'chi tiết yêu cầu',
+            'name' => 'họ và tên',
+            'email' => 'email', 'phone' => 'số điện thoại',
         ]);
 
-        $recipient = WebsiteSetting::current()->booking_email ?: config('mail.booking_to');
+        $recipient = WebsiteSetting::current()->booking_email ?: (config('mail.booking_to') ?: config('mail.from.address'));
         $hotline = WebsiteSetting::current()->hotline ?: '0799 618 555';
 
         if (! filter_var($recipient, FILTER_VALIDATE_EMAIL)
